@@ -77,7 +77,51 @@ public class App {
         }
     }
 
+    public static void Estructura_de_elecciones(HashMap <String, Byte> diccionario_Estudiantes, Scanner scanner, byte eleccion){
+        switch (eleccion) {
+            case 1:
+                Añadir_Estudiantes(diccionario_Estudiantes, scanner);
+                Continuar(diccionario_Estudiantes, scanner);
+                break;
+
+            case 2:
+                Imprimir_estudiantes_con_sus_notas(diccionario_Estudiantes);
+                Continuar(diccionario_Estudiantes, scanner);
+                break;
+
+            case 3:
+                System.out.println("Promedio: " + Calcular_promedio(diccionario_Estudiantes));
+                Continuar(diccionario_Estudiantes, scanner);
+                break;
+            
+            case 4:
+                Imprimir_estudiantes_con_notas_superiores_al_promedio(diccionario_Estudiantes, Calcular_promedio(diccionario_Estudiantes));
+                Continuar(diccionario_Estudiantes, scanner);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public static void Continuar(HashMap <String, Byte> diccionario_Estudiantes, Scanner scanner){
+        System.out.println("¿Desea continuar en el sistema? Escriba si o no: ");
+        String eleccion = scanner.nextLine().toLowerCase();
+        if (eleccion.equals("si") || eleccion.equals("no")){
+            if (eleccion.equals("si")){
+            Estructura_de_elecciones(diccionario_Estudiantes, scanner, menu(diccionario_Estudiantes, scanner));
+        }
+        }
+        else {
+            System.out.println("Lo que dijistaste no es valido, por favor escribe una de las opciones que se te mostraron");
+            Continuar(diccionario_Estudiantes, scanner);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
+        HashMap <String, Byte> diccionario_Estudiantes = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Bienvenid@ al sistema de manejo de notas de la academia de Brawl Stars");
+        Estructura_de_elecciones(diccionario_Estudiantes, scanner, menu(diccionario_Estudiantes, scanner));
     }
 }
