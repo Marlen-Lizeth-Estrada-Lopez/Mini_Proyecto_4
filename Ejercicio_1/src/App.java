@@ -26,6 +26,32 @@ public class App {
         }
     }
 
+    public static float Calcular_promedio(HashMap <String, Byte> diccionario_Estudiantes){
+        short cantidad_de_estudiantes = (short)(diccionario_Estudiantes.size());
+        short suma_notas = 0;
+        for (String indice: diccionario_Estudiantes.keySet()){
+            suma_notas += (short)diccionario_Estudiantes.get(indice);
+        }
+        float promedio = (float)(suma_notas / cantidad_de_estudiantes);
+        return promedio;
+    }
+
+    public static void Imprimir_estudiantes_con_sus_notas(HashMap <String, Byte> diccionario_Estudiantes){
+        for (String indice: diccionario_Estudiantes.keySet()){
+            Byte nota = diccionario_Estudiantes.get(indice);
+            System.out.println("Estudiante: " + indice + " Nota: " + nota);
+        }
+    }
+
+    public static void Imprimir_estudiantes_con_notas_superiores_al_promedio(HashMap <String, Byte> diccionario_Estudiantes, float promedio){
+        for (String indice: diccionario_Estudiantes.keySet()){
+            if (diccionario_Estudiantes.get(indice) > promedio){
+                Byte nota = diccionario_Estudiantes.get(indice);
+                System.out.println("Estudiante: " + indice + " Nota: " + nota);
+            }
+        }
+    }
+
     public static byte menu(HashMap <String, Byte> diccionario_Estudiantes, Scanner scanner){
         System.out.println("Opciones: ");
         System.out.println("1. Añadir estudiantes");
