@@ -43,6 +43,9 @@ public class App {
                     gestionInventario.buscarProducto(codigoBuscar);
                     break;
                 case "5":
+                    System.out.print("Ingrese el nombre del archivo para guardar el inventario: ");
+                    String archivo = scanner.nextLine();
+                    gestionInventario.guardarInventario(archivo);
                     break;
                 case "6":
                     System.out.println("Saliendo del sistema de gestión de inventario.");

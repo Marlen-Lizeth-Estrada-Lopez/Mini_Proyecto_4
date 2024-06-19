@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Gestion_Inventario {
@@ -40,6 +42,17 @@ public class Gestion_Inventario {
             System.out.println("Producto " + codigo + ": cantidad " + producto.getCantidad());
         } else {
             System.out.println("El producto con código " + codigo + " no existe.");
+        }
+    }
+
+    public void guardarInventario(String archivo) {
+        try (FileWriter writer = new FileWriter(archivo)) {
+            for (Producto producto : inventario.values()) {
+                writer.write(producto.toString() + "\n");
+            }
+            System.out.println("Inventario guardado en " + archivo + ".");
+        } catch (IOException e) {
+            System.out.println("Error al guardar el inventario: " + e.getMessage());
         }
     }
 }
