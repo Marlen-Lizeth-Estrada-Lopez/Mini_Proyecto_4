@@ -22,4 +22,9 @@ public class Producto {
     public int getCantidad() {
         return cantidad;
     }
+
+    @Override
+    public String toString() {
+        return codigo + "," + cantidad;
+    }
 }
