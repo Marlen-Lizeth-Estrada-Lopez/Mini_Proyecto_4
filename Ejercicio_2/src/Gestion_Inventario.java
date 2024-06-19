@@ -25,4 +25,21 @@ public class Gestion_Inventario {
             System.out.println("El producto con código " + codigo + " no existe. Use la opción de agregar producto.");
         }
     }
+
+    public void eliminarProducto(String codigo) {
+        if (inventario.remove(codigo) != null) {
+            System.out.println("Producto " + codigo + " eliminado del inventario.");
+        } else {
+            System.out.println("El producto con código " + codigo + " no existe.");
+        }
+    }
+
+    public void buscarProducto(String codigo) {
+        Producto producto = inventario.get(codigo);
+        if (producto != null) {
+            System.out.println("Producto " + codigo + ": cantidad " + producto.getCantidad());
+        } else {
+            System.out.println("El producto con código " + codigo + " no existe.");
+        }
+    }
 }
